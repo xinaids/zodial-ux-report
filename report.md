@@ -363,7 +363,8 @@ https://solscan.io/tx/2jBhvMeGoDKGQQwAWL4Nn9gupdpPYygX5XfVw6vMZ15kL5uhMQfRhuPQuT
 https://solscan.io/tx/2Jdw7V1XFo1UxrPQKKDZnqbcxCWKo5ie8N1AhfXYN8XtNzanrqsXCjyeXSzjZ4p7ESw4tH9sS32FhKFPxPSBfiEV
 
 **Repay transaction ($25 USDC):**
-*2EDeYT3RsuWFWz2F8BxnfVEhQEJVPfprecB3f9CDtjseTQR6XGLnfd1jEmrUMjCZg6YnWbYb8bWh9g6Vf58gNjv5*
+`2EDeYT3RsuWFWz2F8BxnfVEhQEJVPfprecB3f9CDtjseTQR6XGLnfd1jEmrUMjCZg6YnWbYb8bWh9g6Vf58gNjv5`
+https://solscan.io/tx/2EDeYT3RsuWFWz2F8BxnfVEhQEJVPfprecB3f9CDtjseTQR6XGLnfd1jEmrUMjCZg6YnWbYb8bWh9g6Vf58gNjv5
 
 **Wallet:** `DHG4p1tKiXuQS2oYUMAnxR1P4YDgzGdkQfzJZfYoRnNV`
 **Testing period:** July 14–28, 2026
