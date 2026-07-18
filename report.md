@@ -375,7 +375,7 @@ https://solscan.io/tx/2EDeYT3RsuWFWz2F8BxnfVEhQEJVPfprecB3f9CDtjseTQR6XGLnfd1jEm
 
 **Screen recording:** *(Loom link to be added — recording scheduled for July 21)*
 
-**X thread:** *(link to be added)*
+**X thread:** https://x.com/0xinaids/status/2077124328160698826
 
 **Visual mockup (Suggestion 2):**
 https://raw.githubusercontent.com/xinaids/zodial-ux-report/main/assets/deposit-mockup.png
