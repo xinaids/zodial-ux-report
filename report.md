@@ -378,4 +378,4 @@ https://solscan.io/tx/2EDeYT3RsuWFWz2F8BxnfVEhQEJVPfprecB3f9CDtjseTQR6XGLnfd1jEm
 **X thread:** *(link to be added)*
 
 **Visual mockup (Suggestion 2):**
-https://github.com/xinaids/zodial-ux-report/blob/main/assets/deposit-mockup.png
+https://raw.githubusercontent.com/xinaids/zodial-ux-report/main/assets/deposit-mockup.png
