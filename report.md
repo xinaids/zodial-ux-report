@@ -227,6 +227,19 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 
 ---
 
+### FP-14 — No Alert When LTV Rises Due to Price Movement
+
+**What happened:** Over 9 days of monitoring, SOL dropped ~2% and LTV rose from 50.8% to 51.9% silently. No notification, no banner, no email — nothing indicated the position health had changed.
+
+**Why it caused friction:** In a cross-margin protocol where liquidation risk is portfolio-wide, price movements affect health in ways that are not obvious. A user who deposited and stepped away has no way to know their LTV changed without manually checking the app.
+
+**Severity:** High
+
+**Suggested improvement:** Add configurable health alerts — at minimum an in-app banner when LTV crosses user-defined thresholds (e.g. 60%, 70%, 80%). Kamino sends health alerts. This is a standard feature in mature lending protocols.
+
+**Expected impact:** Users manage risk proactively instead of reactively. Reduces liquidations caused by inattention rather than deliberate risk-taking.
+
+---
 ## 4. UI/UX and Product Suggestions
 
 ### Suggestion 1 — Fix the Silent Failure on Market Borrow
