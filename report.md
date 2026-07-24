@@ -5,6 +5,17 @@
 *Testing period: July 14–28, 2026 | 10 days of real usage*
 
 ---
+## Executive Summary
+
+**15 friction points found. 3 Critical, 5 High, 5 Medium, 2 Low.**
+
+The onboarding funnel breaks at 3 consecutive points before any successful action: the user pays SOL to create an account with no confirmation (FP-3), tries to borrow from the most visible entry point and is silently blocked (FP-8), and hits an unexplained error during deposit with no recovery path (FP-7). A new user following the default path encounters three failures in a row before completing a single successful transaction.
+
+The strongest differentiator Zodial has — tokenized stocks, RWAs, and Tether Gold as collateral alongside crypto — is buried behind an onboarding experience that most users will not survive long enough to discover.
+
+**Three fixes that would immediately move the needle:** fix the Market borrow flow, add tooltips to the risk engine, register with Phantom's verified domain program.
+
+---
 
 ## 1. User Profile
 
@@ -150,6 +161,7 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 **Why it caused friction:** The user has already confirmed a transaction in Phantom and is now staring at a two-word error message with no path forward.
 
 **Severity:** Critical
+> **Note:** This error was reproduced across multiple attempts on July 14, 2026 with amounts of 0.8 SOL, 0.79 SOL, and 0.7 SOL. The deposit eventually succeeded on a later retry with no explanation of what changed. Screenshots available in assets/screenshots/04-unexpected-error.png and 05-unexpected-error-retry.png.
 
 **Suggested improvement:** Every error state should include: a short description of what failed, an error code for support reference, and at least one suggested next action.
 
