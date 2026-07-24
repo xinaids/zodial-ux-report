@@ -17,6 +17,18 @@ The strongest differentiator Zodial has — tokenized stocks, RWAs, and Tether G
 
 ---
 
+## Executive Summary
+
+**15 friction points found. 3 Critical, 5 High, 5 Medium, 2 Low.**
+
+The onboarding funnel breaks at 3 consecutive points before any successful action: the user pays SOL to create an account with no confirmation (FP-3), tries to borrow from the most visible entry point and is silently blocked (FP-8), and hits an unexplained error during deposit with no recovery path (FP-7). A new user following the default path encounters three failures in a row before completing a single successful transaction.
+
+The strongest differentiator Zodial has — tokenized stocks, RWAs, and Tether Gold as collateral alongside crypto — is buried behind an onboarding experience that most users will not survive long enough to discover.
+
+**Three fixes that would immediately move the needle:** fix the Market borrow flow, add tooltips to the risk engine, register with Phantom's verified domain program.
+
+---
+
 ## 1. User Profile
 
 **DeFi experience:** Intermediate. I have used DeFi lending protocols before, including a 12-day real-usage test of Hobba (Superteam Balkan bounty, June 2026) covering deposit, borrow, repay, and withdraw flows. General awareness of Kamino, Marginfi, and Jupiter lending markets.
@@ -26,6 +38,37 @@ The strongest differentiator Zodial has — tokenized stocks, RWAs, and Tether G
 **Platforms used:** Hobba (Solana, extended real usage), Kamino (awareness), Marginfi (awareness), Jupiter (regular usage for swaps).
 
 **Testing approach:** I entered Zodial without reading documentation first, using only the interface to navigate. This is intentional — it reflects how most real users onboard and surfaces friction that documentation familiarity would hide.
+
+---
+
+## Landing Page Analysis
+
+**zodial.xyz vs app.zodial.xyz**
+
+The marketing landing page and the application feel like two separate products with no connection between them.
+
+![Zodial landing page — hero section](https://raw.githubusercontent.com/xinaids/zodial-ux-report/main/assets/screenshots/13-landing-page.png)
+
+**What the landing page communicates:**
+- "Perfect Portfolio." — a headline with no explanation of what that means in practice
+- "DeFi's first direct lending protocol on Solana." — potentially misleading, as Marginfi and Kamino predate Zodial on Solana
+- A single "Launch App" CTA
+- An email subscription form labeled "Early Access" — which contradicts the fact that the app is already live on mainnet and audited by Ackee
+
+**What is missing:**
+- No mention of cross-margin lending — the core differentiator
+- No mention of tokenized stocks, RWAs, or Tether Gold as collateral options
+- No APY ranges, no TVL, no social proof, no audit badge
+- No explanation of what a Portfolio Account is or why creating one costs SOL
+- No screenshots or demo of the actual app
+
+**The disconnect:** A user who reads "DeFi's first direct lending protocol on Solana" and clicks Launch App arrives at a raw market table with no continuity from what they just read. The landing page does not prepare the user for the app, and the app does not reference the landing page.
+
+**Suggested improvement:** Before the CTA, the landing page should show:
+1. What cross-margin means vs isolated positions — one sentence and a visual
+2. Which assets are available as collateral (TSLA, NVDA, SpaceX, SOL, BTC, XAUT)
+3. Current APY ranges and TVL as trust signals
+4. The Ackee audit badge — currently only visible in the app footer
 
 ---
 
@@ -146,17 +189,19 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 
 **Suggested improvement:** Before the wallet confirmation, show a transaction breakdown: deposit amount, estimated network fee, wSOL wrapping cost, and total SOL leaving the wallet. *A number users cannot verify is a number users will not trust.*
 
-**Expected impact:** Users confirm transactions with full information. Unexpected charges are one of the most common reasons users abandon DeFi protocols permanently.
+**Expected impact:** Users confirm transactions with full information.
 
 ---
 
 ### FP-7 — "Unexpected Error" With No Code, No Cause, No Recovery Path
 
-**What happened:** Multiple deposit attempts returned a red "Unexpected error" message at the bottom of the Deposit modal. The error persisted across retries with different amounts (0.8 SOL, 0.79 SOL, 0.7 SOL) and across both the Market and Portfolio entry points.
+**What happened:** Multiple deposit attempts returned a red "Unexpected error" message at the bottom of the Deposit modal. The error persisted across retries with different amounts (0.8 SOL, 0.79 SOL, 0.7 SOL) and across both the Market and Portfolio entry points. No error code, no explanation of what failed, no suggestion of what to try next.
 
 ![Unexpected error with no code or recovery path](https://raw.githubusercontent.com/xinaids/zodial-ux-report/main/assets/screenshots/04-unexpected-error.png)
 
 ![Error persisting on retry with different amount](https://raw.githubusercontent.com/xinaids/zodial-ux-report/main/assets/screenshots/05-unexpected-error-retry.png)
+
+> **Reproduction note:** This error was reproduced across multiple attempts on July 14, 2026 with amounts of 0.8, 0.79, and 0.7 SOL. The deposit eventually succeeded on a later retry with no explanation of what changed. Screenshots: assets/screenshots/04-unexpected-error.png and 05-unexpected-error-retry.png.
 
 **Why it caused friction:** The user has already confirmed a transaction in Phantom and is now staring at a two-word error message with no path forward.
 
@@ -203,13 +248,13 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 
 ### FP-10 — Borrow Error Message Inconsistent By Value
 
-**What happened:** When attempting a second borrow of $15 via the [P] USDC tranche, the modal showed a yellow warning explaining the 1.5x safety goal. When attempting $20 or $30, the same tranche showed only: "Unable to borrow right now."
+**What happened:** When attempting a second borrow of $15, the modal showed a useful yellow warning explaining the 1.5x safety goal. When attempting $20 or $30, the same tranche showed only: "Unable to borrow right now."
 
 **Why it caused friction:** The same underlying condition produces two completely different levels of information depending on the amount entered.
 
 **Severity:** High
 
-**Suggested improvement:** The yellow warning with the health target explanation should appear for all values that exceed safe borrowing capacity — not just values below a certain threshold.
+**Suggested improvement:** The informative yellow warning should appear for all values that exceed safe borrowing capacity — not just values below a certain threshold.
 
 **Expected impact:** Users understand why they cannot borrow more and what to do next.
 
@@ -245,13 +290,13 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 
 ### FP-13 — Loop Tab Has No Entry Guidance
 
-**What happened:** The Loop tab opens with all fields empty and no instruction on what to do first. The only guidance appears in the risk panel on the right side, not in the main form.
+**What happened:** The Loop tab opens with all fields empty and no instruction on what to do first.
 
 **Why it caused friction:** Loop is the most complex flow in the product and the one with the least guidance.
 
 **Severity:** Medium
 
-**Suggested improvement:** Add a one-line instruction above the asset selectors with a worked example: *"Example: Deposit SOL, borrow USDC, loop up to 3x."*
+**Suggested improvement:** Add a one-line instruction with a worked example: *"Example: Deposit SOL, borrow USDC, loop up to 3x."*
 
 **Expected impact:** Loop adoption increases.
 
@@ -267,79 +312,69 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 
 **Severity:** High
 
-**Suggested improvement:** Add configurable health alerts when LTV crosses user-defined thresholds (e.g. 60%, 70%, 80%). Kamino sends health alerts. This is standard in mature lending protocols.
+**Suggested improvement:** Add configurable health alerts when LTV crosses user-defined thresholds (60%, 70%, 80%). Kamino and Marginfi both offer health alerts. This is standard in mature lending protocols.
 
 **Expected impact:** Users manage risk proactively instead of reactively.
 
 ---
 
-### FP-15 — Critical Performance Issues (Lighthouse Score: 38/100)
+### FP-15 — Critical Performance Issues Across Desktop and Mobile
 
-**What happened:** I ran a Lighthouse audit on `app.zodial.xyz/market` on July 24, 2026. The results reveal severe performance problems that directly affect user trust and safety.
+**What happened:** I ran Lighthouse audits on Zodial, Kamino, and Marginfi/P0 on July 24, 2026. The results reveal that all three protocols fail Core Web Vitals — but Zodial has a specific mobile LCP issue that represents a safety risk.
 
-**Lighthouse results — Desktop:**
+**Desktop Lighthouse Comparison:**
 
-| Metric | Score | Threshold | Status |
+| Metric | Zodial | Kamino | Marginfi/P0 |
 |---|---|---|---|
-| Performance | **38/100** | 90+ | 🔴 Critical |
-| Accessibility | 90/100 | 90+ | 🟢 Pass |
-| Best Practices | 92/100 | 90+ | 🟢 Pass |
-| SEO | 100/100 | 90+ | 🟢 Pass |
+| Performance Score | 38/100 🔴 | 1/100 🔴 | 57/100 🟡 |
+| LCP | 4.3s 🔴 | 8.9s 🔴 | **1.3s** 🟢 |
+| TBT | 2,610ms 🔴 | 4,450ms 🔴 | 14,120ms 🔴 |
+| Accessibility | **90/100** 🟢 | 74/100 🟡 | 96/100 🟢 |
+| Best Practices | 92/100 🟢 | 54/100 🔴 | **100/100** 🟢 |
+| Total Payload | 3,851 KiB | **23,354 KiB** 🔴 | 4,915 KiB |
 
-**Core Web Vitals breakdown:**
+**Mobile Lighthouse Comparison (Slow 4G):**
 
-| Metric | Value | Good Threshold | Status |
+| Metric | Zodial | Kamino | Marginfi/P0 |
 |---|---|---|---|
-| First Contentful Paint | 0.6s | < 1.8s | 🟢 Good |
-| Largest Contentful Paint | **4.3s** | < 2.5s | 🔴 Poor |
-| Total Blocking Time | **2,610ms** | < 200ms | 🔴 Poor |
-| Cumulative Layout Shift | 0.081 | < 0.1 | 🟡 Needs improvement |
-| Speed Index | **3.8s** | < 3.4s | 🔴 Poor |
+| Performance Score | 43/100 🔴 | **Crashed** ❌ | 37/100 🔴 |
+| LCP | 13.1s 🔴 | Page stopped responding ❌ | 13.6s 🔴 |
+| TBT | 900ms 🔴 | Error ❌ | 2,350ms 🔴 |
+| Accessibility | 83/100 🟡 | Error ❌ | **96/100** 🟢 |
 
-**Key diagnostics:**
-- Total network payload: **3,851 KiB** (severely bloated)
-- Unused JavaScript: **1,292 KiB** that could be eliminated
-- JavaScript execution time: **4.4 seconds**
-- Main-thread work: **6.6 seconds**
-- Long tasks: **20 blocking tasks** found
-- Image delivery: Est. **411 KiB** savings available
+*Note: Kamino's mobile Lighthouse audit failed completely — the page stopped responding during the test.*
 
-**Why it caused friction:** A LCP of 4.3s means the most important content on the Market page takes over 4 seconds to render. A TBT of 2,610ms means the page is unresponsive to user input for nearly 3 seconds after load. For a lending protocol where users need to act quickly on liquidation risk, this is a safety issue — not just a UX issue.
-
-Community members flagged this independently in the bounty comments: *"the site is extremely painful on Linux"* and *"Run the Lighthouse extension in Chrome and check your Page Speed scores for each page."*
+**Why it caused friction:** A mobile LCP of 13.1s means the largest visible content takes 13 seconds to render on a standard 4G connection. For a lending protocol where users may need to act quickly on liquidation risk, this is a safety concern. The mobile Accessibility score dropped from 90 to 83 with specific issues: buttons without accessible names, prohibited ARIA attributes, and insufficient color contrast.
 
 **Severity:** High
 
-**Suggested improvements:**
-1. Reduce unused JavaScript (1,292 KiB available savings) — lazy-load modules not needed on initial render
-2. Optimize image delivery (411 KiB available savings) — use WebP, lazy-load below-fold images
-3. Implement efficient cache lifetimes (177 KiB savings)
-4. Fix render-blocking requests that delay FCP
-5. Use code splitting on the Trade page — TradingView is the likely culprit for the 3,851 KiB payload
+**Context:** Performance issues are not unique to Zodial — Kamino scores 1/100 on desktop and crashes on mobile. However, this makes the opportunity clear: **Zodial could be the first cross-margin DeFi protocol on Solana to pass Core Web Vitals.** None of the three do today.
 
-**Expected impact:** Bringing LCP under 2.5s and TBT under 200ms would move Performance from 38 to 80+. This alone would materially reduce bounce rate on first visit and improve trust for new users whose first impression is a slow-loading market table.
+**Suggested improvements:**
+1. Reduce unused JavaScript — 1,292 KiB of savings available on desktop
+2. Optimize image delivery — 411 KiB savings available
+3. Code-split the Trade page — TradingView is the likely source of the bloated payload
+4. Prioritize Time to Interactive on Portfolio — the page users need fastest when managing risk
+
+**Expected impact:** Bringing LCP under 2.5s and TBT under 200ms on mobile would meaningfully reduce bounce rate and improve trust for new users.
+
+---
+
+## Mobile Experience
+
+![Mobile view — Market Overview](https://raw.githubusercontent.com/xinaids/zodial-ux-report/main/assets/screenshots/14-mobile-market-view.png)
+
+The mobile layout reorganizes into vertical cards, which is functional, but the data density is significantly reduced — requiring more scrolling to see the same information available on desktop. The Portfolio Coverage Flow panel, which is already under-explained on desktop, is harder to parse on mobile due to limited screen space.
 
 ---
 
 ## 4. UI/UX and Product Suggestions
 
-### Suggestion 1 — Fix the Silent Failure on Market Borrow
-
-**Problem:** The Borrow button in the Market Overview table produces "Unable to borrow right now." with no explanation. The Portfolio page borrow flow works correctly.
-
-**Proposed solution:** Either fix the Market borrow flow to respect the selected Portfolio Account, or replace the Market Borrow buttons with a tooltip: *"To borrow, go to your Portfolio page and click New Borrow."*
-
-**Why it matters:** Every user who successfully deposits and then tries to borrow from the Market table is currently being blocked silently.
-
-**How it makes Zodial easier:** Users stop abandoning at the borrow step thinking the protocol is broken.
-
----
-
-### Suggestion 2 — Add Transaction Breakdown Before Wallet Confirmation ⭐ MAIN SUGGESTION
+### Suggestion 1 — Add Transaction Breakdown Before Wallet Confirmation ⭐ MAIN SUGGESTION
 
 **Problem:** The Deposit modal says "You will deposit 0.8 SOL ($60.79)." Phantom asks the user to sign for -0.819022 SOL. The difference (~0.019 SOL, ~$1.44) is never explained anywhere in the Zodial interface.
 
-This is not a fee transparency issue — it is a trust issue.
+This is not a fee transparency issue — it is a trust issue. When the number on screen does not match the number in the wallet, the user's first instinct is that something is wrong with the protocol.
 
 **Proposed solution:**
 
@@ -361,6 +396,16 @@ Total leaving wallet  0.819022 SOL   ($63.18)
 
 ---
 
+### Suggestion 2 — Fix the Silent Failure on Market Borrow
+
+**Problem:** The Borrow button in the Market Overview table produces "Unable to borrow right now." The Portfolio page borrow flow works correctly. Two entry points, one broken, no indication of which to use.
+
+**Proposed solution:** Either fix the Market borrow flow to respect the selected Portfolio Account, or replace the Market Borrow buttons with a tooltip: *"To borrow, go to your Portfolio page and click New Borrow."*
+
+**Why it matters:** Every user who successfully deposits and then tries to borrow from the Market table is currently being blocked silently.
+
+---
+
 ### Suggestion 3 — Add Tooltips to Every Risk Metric
 
 **Problem:** "LTV mode vs LT liquidation buffer," "Portfolio Coverage Flow," "Impact 100/100," "Pressure 100/100" — none of these have explanations.
@@ -369,8 +414,6 @@ Total leaving wallet  0.819022 SOL   ($63.18)
 - **LTV vs LT:** *"LTV shows how much you can still borrow. LT shows how close you are to liquidation. Always watch LT."*
 - **Impact 100/100:** *"Your collateral is fully supporting your current debt."*
 - **Pressure 100/100:** *"Adding debt or reducing collateral increases liquidation risk."*
-
-**Why it matters:** The risk engine is Zodial's core differentiator — it should be the most legible part of the interface, not the least.
 
 ---
 
@@ -421,8 +464,24 @@ Real-time Net Position, Deposits, Borrows, and 30-day PnL for every user. Kamino
 
 ## Comparison With Other Lending Protocols
 
+| Feature | Zodial | Kamino | Marginfi/P0 |
+|---|---|---|---|
+| Cross-margin (portfolio as one balance sheet) | ✅ | ❌ | ❌ |
+| Tokenized stocks as collateral | ✅ | ❌ | ❌ |
+| RWAs / Tether Gold as collateral | ✅ | ❌ | ❌ |
+| Health factor alerts | ❌ | ✅ | ✅ |
+| Guided onboarding flow | ❌ | ✅ | ✅ |
+| Informative error messages | ❌ | ✅ | ✅ |
+| Deleverage in single transaction | ✅ | ❌ | ❌ |
+| Repay directly from collateral | ✅ | ❌ | ❌ |
+| Public leaderboard with real PnL | ✅ | ❌ | ❌ |
+| Phantom verified domain | ❌ | ✅ | ✅ |
+| Desktop Lighthouse Performance | 38/100 🔴 | 1/100 🔴 | 57/100 🟡 |
+| Mobile LCP (Slow 4G) | 13.1s 🔴 | Crashed ❌ | 13.6s 🔴 |
+| Core Web Vitals passing | ❌ | ❌ | ❌ |
+
 **Where Zodial is better than Kamino:**
-Cross-margin model eliminates isolated positions. One health factor for the entire portfolio vs three separate ones.
+Cross-margin model eliminates isolated positions. One health factor for the entire portfolio vs three separate ones. Kamino's desktop Lighthouse score of 1/100 and complete mobile crash shows Zodial is not uniquely behind on performance.
 
 **Where Zodial is better than Marginfi/P0:**
 Tokenized RWAs (stocks, gold) as collateral have no equivalent in Marginfi. Portfolio-level risk visualization is more sophisticated.
@@ -431,20 +490,19 @@ Tokenized RWAs (stocks, gold) as collateral have no equivalent in Marginfi. Port
 Onboarding is cleaner. First action is obvious, confirmation flow is consistent, error messages explain what went wrong.
 
 **Where Marginfi/P0 feels better today:**
-Error states are more informative. When a transaction fails, users get context.
-
-**One feature from Kamino I would want in Zodial:**
-A health factor meter with color-coded safe/warning/danger zones displayed permanently on the Portfolio page.
+Error states are more informative. Accessibility score of 96/100 vs Zodial's 83/100 on mobile.
 
 **One feature Zodial has that no competitor offers:**
 A public Leaderboard with real-time Net Position, Deposits, Borrows, and 30-day PnL for every user.
+
+**The opportunity:** None of the three protocols pass Core Web Vitals today. Zodial could be the first cross-margin DeFi protocol on Solana to achieve this — a meaningful trust signal for users managing real capital.
 
 ---
 
 ## Senior Analysis — What Would Make Zodial Unbeatable
 
 **1. The onboarding funnel is broken at every step.**
-Account creation costs SOL with no confirmation. Deposit has an unexplained fee discrepancy. Borrow fails from the most prominent entry point. A new user hitting all three in sequence — which is the default path — has three consecutive moments of confusion or failure before a single successful action.
+Account creation costs SOL with no confirmation. Deposit has an unexplained fee discrepancy. Borrow fails from the most prominent entry point. A new user hitting all three in sequence has three consecutive moments of confusion or failure before a single successful action.
 
 **2. The risk engine is the core product but the least legible part of the UI.**
 Zodial's entire value proposition is that cross-margin is better than isolated positions. But to feel that benefit, the user needs to understand what the risk engine is showing them. Right now, the most important panel in the app requires the most prior knowledge to read. This is backwards.
@@ -453,18 +511,21 @@ Zodial's entire value proposition is that cross-margin is better than isolated p
 No alerts when LTV rises. No confirmation when account creation succeeds. No email or Telegram alerts. A lending protocol in 2026 with no notification system is a significant trust and safety gap.
 
 **4. Error states are not a product.**
-"Unexpected error" and "Unable to borrow right now" are placeholders. Every error should be a designed moment: what happened, why, what to do next. Right now errors feel like the protocol is hiding something.
+"Unexpected error" and "Unable to borrow right now" are placeholders. Every error should be a designed moment: what happened, why, what to do next.
 
 **5. Performance is a safety issue, not just a UX issue.**
-A Lighthouse score of 38/100, LCP of 4.3s, and TBT of 2,610ms on the Market page means users cannot interact with the app for nearly 3 seconds after load. For a protocol where users need to act quickly on LTV changes, this is dangerous. The 3,851 KiB total payload — largely from unused JavaScript — is the root cause and is fixable.
+A mobile LCP of 13.1s means users cannot see the most important content for 13 seconds on 4G. For a protocol where users need to act quickly on liquidation risk, this is dangerous. The good news: no competitor passes Core Web Vitals either, making this a genuine opportunity to differentiate.
 
-**6. The Trade terminal is underexposed.**
+**6. The landing page and the app are disconnected.**
+A user who reads "Perfect Portfolio" on zodial.xyz and clicks Launch App arrives at a raw market table with no continuity. The landing page mentions none of Zodial's actual differentiators — cross-margin, tokenized stocks, RWAs, trade terminal.
+
+**7. The Trade terminal is underexposed.**
 The most sophisticated part of Zodial is the least discoverable. A new user going through the default flow will never reach it.
 
 **The three changes that would immediately move the needle:**
 1. Fix the Market borrow flow — eliminates the most common conversion failure
 2. Add tooltips to every risk metric — makes the core product legible
-3. Fix page performance (LCP + TBT) — a 38/100 Lighthouse score on a financial protocol is a trust-breaker
+3. Fix page performance (LCP + TBT) — opportunity to lead the category
 
 ---
 
@@ -497,9 +558,9 @@ https://solscan.io/tx/2EDeYT3RsuWFWz2F8BxnfVEhQEJVPfprecB3f9CDtjseTQR6XGLnfd1jEm
 
 ## Bonus
 
-**Screen recording:** *https://youtu.be/zDwjqCe1wjg*
+**Screen recording:** https://youtu.be/zDwjqCe1wjg
 
 **X thread:** https://x.com/0xinaids/status/2077124328160698826
 
-**Visual mockup (Suggestion 2):**
+**Visual mockup (Suggestion 1):**
 https://raw.githubusercontent.com/xinaids/zodial-ux-report/main/assets/screenshots/10-mockup-breakdown.png
