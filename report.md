@@ -485,7 +485,7 @@ https://solscan.io/tx/2EDeYT3RsuWFWz2F8BxnfVEhQEJVPfprecB3f9CDtjseTQR6XGLnfd1jEm
 
 ## Bonus
 
-**Screen recording:** *(YouTube link to be added)*
+**Screen recording:** *https://youtu.be/zDwjqCe1wjg*
 
 **X thread:** https://x.com/0xinaids/status/2077124328160698826
 
