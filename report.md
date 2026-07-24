@@ -240,6 +240,21 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 **Expected impact:** Users manage risk proactively instead of reactively. Reduces liquidations caused by inattention rather than deliberate risk-taking.
 
 ---
+
+
+### FP-15 — Page Performance Issues on Load
+
+**What happened:** Multiple pages showed slow loading, particularly the Trade page with TradingView integration. Community comments on the bounty listing also flagged the site as "extremely painful on Linux" with poor Lighthouse scores.
+
+**Why it caused friction:** A lending protocol where users need to act quickly on LTV changes cannot afford slow page loads. Hesitation caused by a loading spinner at a critical moment is a real risk.
+
+**Severity:** Medium
+
+**Suggested improvement:** Run Lighthouse audits on Market, Portfolio, and Trade pages. Prioritize Time to Interactive on Portfolio — it is the page users need fastest when managing risk.
+
+**Expected impact:** Faster load times reduce abandonment and improve trust, especially for new users whose first impression is a slow-loading market table.
+
+---
 ## 4. UI/UX and Product Suggestions
 
 ### Suggestion 1 — Fix the Silent Failure on Market Borrow
