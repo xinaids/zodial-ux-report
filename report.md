@@ -200,6 +200,13 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 
 **Expected impact:** Users who hit errors do not abandon — they have a clear path to resolution.
 
+> **Root cause confirmed:** On July 15, 2026, the Zodial team disclosed 
+> in their official Telegram support channel that a new frontend safety 
+> feature introduced around July 14 had not been tested with Phantom wallet, 
+> causing transaction failures. This confirms the "Unexpected error" was a 
+> real protocol-level bug, not user error. The team deployed a hotfix within 
+> hours after community reports.
+
 ---
 
 ### FP-8 — Borrow From Market Page Silently Fails; Portfolio Page Works
