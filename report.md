@@ -339,6 +339,31 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 
 *Note: Kamino's mobile Lighthouse audit failed completely — the page stopped responding during the test.*
 
+**WebPageTest Results (Jul 25, 2026 — Desktop, WiFi, Milan):**
+
+| Metric | Score | Status |
+|---|---|---|
+| Time To First Byte | 0.114s | 🟢 Excellent |
+| Start Render | 0.7s | 🟢 Fast |
+| First Contentful Paint | 2.181s | 🟡 Acceptable |
+| Largest Contentful Paint | 2.349s | 🟢 Passes threshold |
+| Cumulative Layout Shift | 0.101 | 🟡 Minor issues |
+| Total Blocking Time | 0.906s | 🟡 Needs improvement |
+| Total Requests | 205 | 🔴 Very high |
+| Page Weight | 4MB | 🔴 Heavy |
+| Total Load Time | 4.995s | 🟡 Needs improvement |
+
+**Key finding:** Under ideal conditions (WiFi, low latency), LCP passes at 2.349s — 
+within the 2.5s threshold. This contrasts with Lighthouse's 4.3s LCP, which simulates 
+throttled conditions. The real-world performance on good connections is acceptable; 
+the problem is specifically mobile and slow connections.
+
+**2 serious accessibility issues** were flagged — consistent with the Lighthouse 
+mobile accessibility drop from 90 to 83.
+
+**205 total requests and 4MB page weight** explain the slow mobile experience. 
+For reference, a well-optimized DeFi app should be under 100 requests and 2MB.
+
 **Why it caused friction:** A mobile LCP of 13.1s means the largest visible content takes 13 seconds to render on a standard 4G connection. For a lending protocol where users may need to act quickly on liquidation risk, this is a safety concern. The mobile Accessibility score dropped from 90 to 83 with specific issues: buttons without accessible names, prohibited ARIA attributes, and insufficient color contrast.
 
 **Severity:** High
