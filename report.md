@@ -194,7 +194,6 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 **Why it caused friction:** The user has already confirmed a transaction in Phantom and is now staring at a two-word error message with no path forward.
 
 **Severity:** Critical
-> **Note:** This error was reproduced across multiple attempts on July 14, 2026 with amounts of 0.8 SOL, 0.79 SOL, and 0.7 SOL. The deposit eventually succeeded on a later retry with no explanation of what changed. Screenshots available in assets/screenshots/04-unexpected-error.png and 05-unexpected-error-retry.png.
 
 **Suggested improvement:** Every error state should include: a short description of what failed, an error code for support reference, and at least one suggested next action.
 
