@@ -17,18 +17,6 @@ The strongest differentiator Zodial has — tokenized stocks, RWAs, and Tether G
 
 ---
 
-## Executive Summary
-
-**15 friction points found. 3 Critical, 5 High, 5 Medium, 2 Low.**
-
-The onboarding funnel breaks at 3 consecutive points before any successful action: the user pays SOL to create an account with no confirmation (FP-3), tries to borrow from the most visible entry point and is silently blocked (FP-8), and hits an unexplained error during deposit with no recovery path (FP-7). A new user following the default path encounters three failures in a row before completing a single successful transaction.
-
-The strongest differentiator Zodial has — tokenized stocks, RWAs, and Tether Gold as collateral alongside crypto — is buried behind an onboarding experience that most users will not survive long enough to discover.
-
-**Three fixes that would immediately move the needle:** fix the Market borrow flow, add tooltips to the risk engine, register with Phantom's verified domain program.
-
----
-
 ## 1. User Profile
 
 **DeFi experience:** Intermediate. I have used DeFi lending protocols before, including a 12-day real-usage test of Hobba (Superteam Balkan bounty, June 2026) covering deposit, borrow, repay, and withdraw flows. General awareness of Kamino, Marginfi, and Jupiter lending markets.
@@ -121,9 +109,9 @@ The asset variety. Borrowing against tokenized SpaceX shares or Tesla xStock as 
 
 ![Phantom showing "new domain" warning on every transaction](https://raw.githubusercontent.com/xinaids/zodial-ux-report/main/assets/screenshots/02-phantom-new-domain-warning.png)
 
-**Why it caused friction:** Zodial is audited by Ackee Blockchain Security and live on mainnet. A "new domain" warning on every confirmation screen directly contradicts the trust signals the protocol displays in its own footer.
+**Why it caused friction:** Zodial is audited by Ackee Blockchain Security and live on mainnet. A "new domain" warning on every confirmation screen directly contradicts the trust signals the protocol displays in its own footer. This affects every transaction, for every user, permanently — until the domain is registered with Phantom's verified program.
 
-**Severity:** Medium
+**Severity:** High
 
 **Suggested improvement:** Register the domain with Phantom's verified domain program. This is a one-time fix that eliminates a trust-breaking signal on every user transaction permanently.
 
