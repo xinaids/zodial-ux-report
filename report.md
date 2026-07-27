@@ -573,6 +573,17 @@ https://solscan.io/tx/2EDeYT3RsuWFWz2F8BxnfVEhQEJVPfprecB3f9CDtjseTQR6XGLnfd1jEm
 **Wallet:** `DHG4p1tKiXuQS2oYUMAnxR1P4YDgzGdkQfzJZfYoRnNV`
 **Testing period:** July 14–28, 2026
 
+**Position status (Jul 27, 2026 — 24h before deadline):**
+- Deposits: 0.8002 SOL ($60.30) — active
+- Borrows: 26.41 USDC ($26.41) — active
+- Net position: $33.88
+- LTV: 52.5% — healthy
+- Account P&L: -$0.86 (SOL price movement, position maintained throughout)
+- Testing period: 13 days continuous
+
+The 30D chart confirms the full position lifecycle — deposit Jul 14,
+peak borrow Jul 14, repay Jul 15, stable monitoring Jul 15–27.
+
 ---
 
 ## Bonus
