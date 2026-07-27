@@ -1,6 +1,6 @@
 # Zodial UX & Product Feedback Report
 
-> **9-day real-usage test of cross-margin lending on Solana**
+> **13-day real-usage test of cross-margin lending on Solana**
 > Submitted for the [Superteam Germany x Zodial Bounty](https://earn.superteam.fun/listings/zodial-ux-bounty/)
 > By [@0xinaids](https://x.com/0xinaids) — July 14–28, 2026
 
@@ -41,6 +41,7 @@ Testing was done with real assets, no documentation read upfront, and across all
 ### High
 | # | Finding |
 |---|---------|
+| FP-2 | "New domain" warning on every transaction despite Ackee audit |
 | FP-3 | No confirmation after paying ~0.017 SOL to create account |
 | FP-6 | Amount discrepancy between Zodial modal (0.8 SOL) and Phantom (-0.819 SOL) |
 | FP-9 | Cross-margin terminology has no tooltips — risk engine is a black box |
@@ -49,7 +50,6 @@ Testing was done with real assets, no documentation read upfront, and across all
 ### Medium
 | # | Finding |
 |---|---------|
-| FP-2 | "New domain" warning on every transaction despite Ackee audit |
 | FP-5 | Deposit modal shows no post-deposit impact |
 | FP-11 | P&L shows -224.8% after repaying debt |
 | FP-12 | Rewards eligibility hidden until you navigate there |
@@ -88,4 +88,5 @@ The deposit modal says "You will deposit 0.8 SOL." Phantom asks to sign for -0.8
 - 📄 [Full Report](./report.md)
 - 🐦 [X Thread](https://x.com/0xinaids/status/2077124328160698826)
 - 🎨 [Visual Mockup](./assets/deposit-mockup.png)
-- 🏆 [Bounty Listing](https://earn.superteam.fun/)
+- 🏆 [Bounty Listing](https://superteam.fun/earn/listing/learn-how-to-borrow-better-leave-product-feedback-and-earn-with-zodial)
+- 🎥 [Video Review](https://youtu.be/zDwjqCe1wjg)
